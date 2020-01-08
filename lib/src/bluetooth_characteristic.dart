@@ -123,7 +123,7 @@ class BluetoothCharacteristic {
         .invokeMethod('writeCharacteristic', request.writeToBuffer());
 
     if (type == CharacteristicWriteType.withoutResponse) {
-      _value.add(value);
+//      _value.add(value);
       return result;
     }
 
@@ -141,7 +141,7 @@ class BluetoothCharacteristic {
         .then((success) => (!success)
             ? throw new Exception('Failed to write the characteristic')
             : null)
-        .then((_) => _value.add(value))
+//        .then((_) => _value.add(value))
         .then((_) => null);
   }
 
