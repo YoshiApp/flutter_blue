@@ -486,10 +486,10 @@ typedef NS_ENUM(NSUInteger, LogLevel) {
   }
 
   // If descriptor is CCCD, send a SetNotificationResponse in case anything is awaiting
-  if([descriptor.UUID.UUIDString isEqualToString:@"2902"]){
+  if([cccd.UUID.UUIDString isEqualToString:@"2902"]){
     ProtosSetNotificationResponse *response = [[ProtosSetNotificationResponse alloc] init];
     [response setRemoteId:[peripheral.identifier UUIDString]];
-    [response setCharacteristic:[self toCharacteristicProto:peripheral characteristic:descriptor.characteristic]];
+    [response setCharacteristic:[self toCharacteristicProto:peripheral characteristic:cccd.characteristic]];
     [response setSuccess:true];
     [_channel invokeMethod:@"SetNotificationResponse" arguments:[self toFlutterData:response]];
   }
