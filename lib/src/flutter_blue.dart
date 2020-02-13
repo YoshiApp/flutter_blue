@@ -103,7 +103,7 @@ class FlutterBlue {
     }
 
     yield* FlutterBlue.instance._methodStream.where((m) => m.method == "ScanResult").map((m) => m.arguments)
-        .takeUntil(MergeStream(killStreams))
+        .takeUntil(Rx.merge(killStreams))
         .doOnDone(stopScan)
         .map((buffer) => new protos.ScanResult.fromBuffer(buffer))
         .map((p) {
